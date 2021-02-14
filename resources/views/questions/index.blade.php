@@ -5,10 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">All questions</div>
-
+                <div class="card-header">
+                   <div class="text-center">
+                       <h2> All Questions </h2>
+                       <a href="{{route('questions.create')}}" class="btn btn-outline-secondary" style="float: right">Ask Question</a>
+                   </div>
+                </div>
                 <div class="card-body">
-
                     @foreach ($questions as $question)
                         <div class="media">
                             <div class="d-flex flex-column coutnters">
