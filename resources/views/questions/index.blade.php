@@ -11,6 +11,17 @@
 
                     @foreach ($questions as $question)
                         <div class="media">
+                            <div class="d-flex flex-column coutnters">
+                                <div class="votes">
+                                    <strong> {{$question->votes}} </strong> {{str_plural('vote',$question->votes)}}
+                                </div>
+                            <div class="status {{ $question->status }}">
+                                    <strong> {{$question->answers}} </strong> {{str_plural('answer',$question->answers)}}
+                                </div>
+                                <div class="views">
+                                    <strong> {{$question->views}} </strong> {{str_plural('view', $question->views)}}
+                                </div>
+                            </div>
                             <div class="media-body">
                                 <h3> <a href=" {{ $question->url }}">{{ $question->title }}</a> </h3>
                                 <p class="lead">

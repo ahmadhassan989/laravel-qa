@@ -10944,3 +10944,38 @@ a.text-dark:focus {
   }
 }
 
+.coutnters {
+  margin-right: 30px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.coutnters strong {
+  font-size: 20px;
+  display: block;
+}
+
+.coutnters .votes,
+.coutnters .views {
+  width: 60px;
+  height: 60px;
+}
+
+.coutnters .status.unanswered {
+  border: none;
+}
+
+.coutnters .status.answered {
+  border: 1px solid #5fb97e;
+  color: #5fb97e;
+}
+
+.coutnters .status.answered-accepted {
+  background-color: #5fb97e;
+  color: #FFF;
+}
+
+.coutnters .views {
+  margin-top: 10px;
+}
+
