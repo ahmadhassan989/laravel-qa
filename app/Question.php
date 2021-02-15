@@ -7,6 +7,8 @@ use Str;
 
 class Question extends Model
 {
+
+    protected $fillable = ['body', 'title'];
      public function user()
      {
          return $this->belongsTo(User::class);

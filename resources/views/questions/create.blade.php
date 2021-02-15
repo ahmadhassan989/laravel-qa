@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
+
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -16,27 +18,32 @@
                     @csrf
                     <div class="form-group">
                         <label for="question-title">Question Title </label>
-                        <input type="text" name="title" id="question-title" class="form-control">
+                        <input type="text" name="title" value="{{ old('title') }}" id="question-title" class="form-control">
                         @if($errors->has('title'))
-                            <div class="invalid-feedback">
+                            <div style="color: red">
                                 <strong> {{$errors->first('title')}} </strong>
                             </div>
                         @endif
                     </div>
                     <div class="form-group">
                         <label for="Question body">Explain your Question  </label>
-                        <textarea name="body" id="Question body" row="10" class="form-control"> </textarea>
+                        <textarea name="body" id="Question body" row="10" class="form-control">
+                            {{old('body')}}
+                        </textarea>
                         @if( $errors->has('body'))
-                            <div class="invalid-feedback">
-                                <strong>{{ $errors->first('title') }}</strong>
-                            </div>
-                        @endif
+                        <div style="color: red">
+                            <strong>{{ $errors->first('body') }}</strong>
+                        </div>
+                    @endif
+
                     </div>
+
 
                     <div class="form-group">
                         <button class="btn btn-outline-primary btn-lg">
                             Ask this question
                         </button>
+
                     </div>
 
                 </form>
