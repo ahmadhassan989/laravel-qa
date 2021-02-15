@@ -37,4 +37,24 @@
     .views {
         margin-top: 10px;
     }
+
+    form.form-delete {
+        display: inline;
+    }
+
+
+
 }
+div.ml-auto{
+    &.options{
+        display: grid;
+        grid-template-columns: (1fr 1fr);
+        a{
+            margin-right: 5px;
+        }
+    }
+
+
+}
+
+

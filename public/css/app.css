@@ -10979,3 +10979,16 @@ a.text-dark:focus {
   margin-top: 10px;
 }
 
+.coutnters form.form-delete {
+  display: inline;
+}
+
+div.ml-auto.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+div.ml-auto.options a {
+  margin-right: 5px;
+}
+
