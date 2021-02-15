@@ -23,6 +23,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        \Gate::define('options-questions', function($uesr, $quesiton){
+            return $uesr->id == $quesiton->user_id;
+        });
         $this->registerPolicies();
 
         //

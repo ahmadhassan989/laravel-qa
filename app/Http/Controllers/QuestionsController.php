@@ -64,7 +64,12 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        return view('questions.edit',compact('question'));
+        if (\Gate::denies('options-questions',$question)) {
+            return abort(403, "Access defined");
+        }
+        else {
+            return view('questions.edit',compact('question'));
+        }
     }
 
     /**
