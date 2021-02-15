@@ -9,13 +9,22 @@
             <div class="card">
                 <div class="card-header">
                    <div class="text-center">
-                       <h2> Ask Questions </h2>
+                       <h2> Edit Questions </h2>
                        <a href="{{route('questions.index')}}" class="btn btn-outline-secondary" style="float: right">Back to all Question</a>
                    </div>
                 </div>
                 <div class="card-body">
                 <form action="{{route('questions.store')}}" method="POST">
-                    @include('questions._formQuestions',['questionButton'=>'Ask Question'])
+
+                    {{-- {{method_field('PUT')}} --}}
+
+                    @include('questions._formQuestions',
+                    [
+                        'questionButton'=>'Update Question',
+                    'title'=>$question->title,
+                    'body'=>$question->body,
+                    ])
+
                 </form>
                 </div>
             </div>
