@@ -27,6 +27,11 @@ class AuthServiceProvider extends ServiceProvider
         \Gate::define('options-questions', function($uesr, $quesiton){
             return $uesr->id == $quesiton->user_id;
         });
+
+        \Gate::define('delete-questions', function($user, $quesiton){
+            return $user->id == $quesiton->user_id;
+        });
+        
         $this->registerPolicies();
 
         //

@@ -31,7 +31,8 @@
                                 <div class="d-flex align-items-center">
 
                                     <h3> <a href=" {{ $question->url }}">{{ $question->title }}</a> </h3>
-                                    @if(Auth::user()->can('options-questions', $question))
+                                    @if (Auth::user())
+                                    @if(Auth::user()->can('options-questions', $question) )
 
                                     <div class="ml-auto options" >
                                         <a href=" {{route('questions.edit',$question->id)}}" class="btn btn-outline-info btn-sm">
@@ -46,6 +47,8 @@
                                         </form>
                                     </div>
                                     @endif
+                                    @endif
+
                                 </div>
                                 <p class="lead">
                                     Asked by

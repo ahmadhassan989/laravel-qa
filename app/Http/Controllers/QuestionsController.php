@@ -13,9 +13,16 @@ class QuestionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // public function __construct()
+    // {
+    //     // $this->middleware('auth',['except'=>['index', 'show']]);
+    // }
+
+
     public function index()
     {
-
+        // dd('xxx');
         $questions = Question::with('user')->latest()->paginate(5);
 
         return view('questions.index',compact('questions'));
@@ -65,7 +72,7 @@ class QuestionsController extends Controller
     public function edit(Question $question)
     {
         if (\Gate::denies('options-questions',$question)) {
-            return abort(403, "Access defined");
+            return abort(403, "Access denied");
         }
         else {
             return view('questions.edit',compact('question'));
@@ -94,7 +101,11 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question)
     {
+        if(\Gate::denies('delete-questions', $question )){
+            return abort(403,"Access denide");
+        }
         $question->delete();
+
         return redirect('/questions')->with('success','Question deleted');
     }
 }
