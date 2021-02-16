@@ -10992,3 +10992,52 @@ div.ml-auto.options a {
   margin-right: 5px;
 }
 
+.vote-control {
+  min-width: 60px;
+  margin-right: 30px;
+  text-align: center;
+  color: #3b4045;
+}
+
+.vote-control span,
+.vote-control a {
+  display: block;
+  margin: 1px 0px;
+}
+
+.vote-control span.votes-count {
+  font-size: 25px;
+}
+
+.vote-control span.favorite-count {
+  font-size: 13px;
+}
+
+.vote-control a {
+  cursor: pointer;
+  color: #6c757d;
+  font-weight: 700;
+}
+
+.vote-control a.off,
+.vote-control a.off:hover {
+  color: #adb5bd;
+}
+
+.vote-control a.favorite {
+  margin-top: 10px;
+}
+
+.vote-control a.favorite.favorited i,
+.vote-control a.favorite.favorited:hover i {
+  color: #ffed4a;
+}
+
+.vote-control a:hover {
+  text-decoration: none;
+}
+
+.vote-control .vote-accepted {
+  color: #5fb97e !important;
+}
+
