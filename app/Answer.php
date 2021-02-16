@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use Parsedown;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,6 +29,11 @@ class Answer extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return \Parsdown::instance()->text($this->body);
+        return Parsedown::instance()->text($this->body);
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }
