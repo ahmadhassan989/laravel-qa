@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
 
-
+    protected $fillable = ['body','user_id'];
     public static function boot()
     {
         parent::boot();
