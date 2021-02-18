@@ -2,11 +2,11 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
+                @include('layouts._messages')
                 <div class="card-title">
                     <h2>{{$answersCount . " " . str_plural('Answer',$answersCount)}}</h2>
                 </div>
                 <hr>
-                @include('layouts._messages')
                 @foreach ($answers as $answer)
                     <div class="media">
                         <div class="d-flex flex-column vote-control">
@@ -25,6 +25,9 @@
                          </div>
                         <div class="media-body">
                             {!! str_limit($answer->body_html, 300) !!}
+
+
+
                             <div class="float-right">
                                 <span class="text-muted">
                                     Answered {{$answer->created_date }}
@@ -40,8 +43,19 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
+                    @can('update', $answer)
+                    <div class="text-center">
+                        <a href=" {{route('questions.answers.edit',[$question->id,$answer->id])}} " class="btn btn-outline-secondary btn-sm">Update</a>
+                        <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
+                    </div>
+
+                    @endcan
+
+
                     <hr>
                 @endforeach
             </div>
