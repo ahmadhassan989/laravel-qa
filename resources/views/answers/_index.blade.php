@@ -19,7 +19,7 @@
                             <a title="This answer is not usfull" class="vote-down off">
                                 <i class="fas fa-caret-down fa-4x"></i>
                             </a>
-                            <a title="Click to select as best answer (click again to undo)" class="vote-accepted">
+                            <a title="Click to select as best answer (click again to undo)" class=" {{$answer->best_answer}} ">
                                 <i class="fas fa-check fa-3x"></i>
                             </a>
                          </div>

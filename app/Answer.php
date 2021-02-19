@@ -5,6 +5,7 @@ use Parsedown;
 
 
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\Null_;
 
 class Answer extends Model
 {
@@ -19,7 +20,14 @@ class Answer extends Model
         });
 
         static::deleted( function($answer){
-            $answer->question->decrement('answers');
+            $question = $answer->question;
+            $question->decrement('answers');
+
+            if ( $question->best_answer_id == $answer->id ) {
+                $question->best_answer_id = null;
+                $question->save();
+            }
+
         });
     }
     public function question()
@@ -40,5 +48,10 @@ class Answer extends Model
     public function getCreatedDateAttribute()
     {
         return $this->created_at->diffForHumans();
+    }
+
+    public function getBestAnswerAttribute()
+    {
+        return $this->id == $this->question->best_answer_id ? 'vote-accepted' : '';
     }
 }
