@@ -19,9 +19,33 @@
                             <a title="This answer is not usfull" class="vote-down off">
                                 <i class="fas fa-caret-down fa-4x"></i>
                             </a>
-                            <a title="Click to select as best answer (click again to undo)" class=" {{$answer->best_answer}} ">
+
+                            @can('accept', $answer)
+
+                            <a   title="Click to select as best answer (click again to undo)" class=" {{$answer->best_answer}}"
+
+                                    onclick="
+                                        event.preventDefault();
+                                        x = document.getElementById('accept-answer-{{$answer->id}}');
+                                        // x.event.preventDefault();
+                                        x.submit()
+                                    "
+                            >
                                 <i class="fas fa-check fa-3x"></i>
                             </a>
+                                <form id ="accept-answer-{{$answer->id}}"   action="{{ route('answers.accept',$answer->id)}}" method="POST" style="display: none">
+                                    @csrf
+                                </form>
+                                @else
+                                @if ($answer->bestAnswer)
+                                     <a   title="Click to select as best answer (click again to undo)" class=" {{$answer->best_answer}}">
+                                    <i class="fas fa-check fa-3x"></i>
+                                     </a>
+                                @endif
+
+
+                                @endcan
+
                          </div>
                         <div class="media-body">
                             {!! str_limit($answer->body_html, 300) !!}
@@ -69,3 +93,6 @@
         </div>
     </div>
 </div>
+
+
+

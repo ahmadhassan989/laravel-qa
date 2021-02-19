@@ -27,6 +27,11 @@ class AnswerPolicy
         return $user->id == $answer->user_id ;
     }
 
+    public function accept(User $user, Answer $answer)
+    {
+        return $answer->question->user_id == $user->id;
+    }
+
     /**
      * Determine whether the user can delete the model.
      *
