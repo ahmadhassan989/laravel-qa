@@ -11041,3 +11041,10 @@ div.ml-auto.options a {
   color: #5fb97e !important;
 }
 
+.answer-delete {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline-block;
+}
+

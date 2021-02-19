@@ -50,7 +50,14 @@
                     @can('update', $answer)
                     <div class="text-center">
                         <a href=" {{route('questions.answers.edit',[$question->id,$answer->id])}} " class="btn btn-outline-secondary btn-sm">Update</a>
-                        <a href="#" class="btn btn-outline-danger btn-sm">Delete</a>
+                            <div class="answer-delete">
+                                <form action="{{route('questions.answers.destroy',[$question->id,$answer->id])}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submitt" class="btn btn-outline-danger btn-sm" onclick="return confirm('Are you sure ?')" >Delete</button>
+                                </form>
+                            </div>
+
                     </div>
 
                     @endcan
