@@ -11011,6 +11011,7 @@ div.ml-auto.options a {
 
 .vote-control span.favorite-count {
   font-size: 13px;
+  font-weight: bold;
 }
 
 .vote-control a {

@@ -12,6 +12,7 @@
                         <div class="text-center">
                             <a href="{{route('questions.index')}}" class="btn btn-outline-secondary" style="float: right">Back to all Question</a>
                             <h1> {{$question->title}} </h1>
+
                         </div>
                     </div>
                     <hr>
@@ -27,13 +28,28 @@
                                 <i class="fas fa-caret-down fa-4x"></i>
 
                             </a>
-                            <a title="Click to mark as favorite question (click again to undo)" class="favorite">
+                        <a title="Click to mark as favorite question (click again to undo)" class="favorite {{$question->is_favorites ? 'favorited' : ''}}"
+
+                            onclick="
+                                event.preventDefault();
+                                document.getElementById('favorite-question-{{$question->id}}').submit();
+                            "
+
+                            >
                                 <i class="fas fa-star fa-3x"></i>
 
                                 <span class="favorite-count">
-                                    33
+                                    {{$question->favorites_count}}
                                 </span>
                             </a>
+                                <form id="favorite-question-{{$question->id}}" action="/question/{{$question->id}}/favorite" method="POST">
+                                    @csrf
+
+                                    @if($question->is_favorites)
+                                        @method('DELETE')
+                                    @endif
+
+                                </form>
                          </div>
                          <div class="media-body">
 
